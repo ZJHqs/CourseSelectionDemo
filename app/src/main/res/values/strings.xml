@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CourseSelectionDemo</string>
+    <string name="function_test">功能测试</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="student">学生</string>
+    <string name="teacher">教师</string>
+    <string name="admin">管理员</string>
+</resources>
