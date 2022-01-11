@@ -2,15 +2,9 @@ package com.example.courseselectiondemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import cn.bmob.v3.Bmob
-import cn.bmob.v3.BmobObject
-import cn.bmob.v3.exception.BmobException
-import cn.bmob.v3.listener.SaveListener
 import com.example.courseselectiondemo.databinding.ActivityMainBinding
 import com.example.courseselectiondemo.logic.dao.StudentImpl
 
