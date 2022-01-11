@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 //        }
         binding.button.setOnClickListener {
             val student = StudentImpl()
-            student.delete("255c8528d6")
+            student.deleteById("3118000020")
         }
     }
 

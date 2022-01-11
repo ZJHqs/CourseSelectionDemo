@@ -93,4 +93,31 @@ class StudentImpl : StudentInterface {
             }
         })
     }
+
+    override fun deleteById(id: String) {
+        val bmobQuery = BmobQuery<Student>()
+        bmobQuery.addWhereEqualTo("id", id)
+        bmobQuery.findObjects(object : FindListener<Student>() {
+            override fun done(list :List<Student>, e : BmobException?) {
+                if (e == null) {
+                    if (list.isNotEmpty()) {
+                        val student = list[0]
+                        student.delete(object : UpdateListener() {
+                            override fun done(e: BmobException?) {
+                                if (e == null) {
+                                    Toast.makeText(CourseSelectionApplication.context, "删除成功！", Toast.LENGTH_SHORT).show()
+                                }
+                                else {
+                                    Toast.makeText(CourseSelectionApplication.context, "该用户不存在", Toast.LENGTH_SHORT).show()
+                                }
+                            }
+                        })
+                    }
+                    else {
+                        Toast.makeText(CourseSelectionApplication.context, "用户不存在！", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
+    }
 }

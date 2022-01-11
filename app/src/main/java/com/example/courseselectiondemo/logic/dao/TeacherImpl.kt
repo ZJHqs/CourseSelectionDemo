@@ -45,11 +45,8 @@ class TeacherImpl : TeacherInterface {
         teacher.password = password
         teacher.save(object : SaveListener<String>() {
             override fun done(objectId: String?, e: BmobException?) {
-                if (e == null) {
-
-                }
-                else {
-                    Log.e("CREATE","FAILED!"+ e.message)
+                if (e != null) {
+                    Log.e("CREATE","Failed!" + e.message)
                 }
             }
         })
