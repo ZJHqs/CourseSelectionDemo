@@ -25,9 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding.login.setOnClickListener {
             if (binding.student.isChecked) {
                 val student = StudentImpl()
-//                val id = binding.uid.text.toString()
-//                val password = binding.upassword.text.toString()
-//                Log.d("QUERY","name:$id")
                 student.query(binding.uid.text.toString(), binding.upassword.text.toString())
             }
             else if (binding.teacher.isChecked) {
@@ -42,11 +39,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         /*
-        以下是为了初始化数据库
+        以下是为了测试功能
          */
+//        binding.button.setOnClickListener {
+//            val student = StudentImpl()
+//            student.add("钟俊豪", "123456")
+//        }
         binding.button.setOnClickListener {
             val student = StudentImpl()
-            student.add("钟俊豪", "123456")
+            student.delete("255c8528d6")
         }
     }
 

@@ -4,10 +4,7 @@ import android.util.Log
 import android.widget.Toast
 import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
-import cn.bmob.v3.listener.FindListener
-import cn.bmob.v3.listener.QueryListListener
-import cn.bmob.v3.listener.QueryListener
-import cn.bmob.v3.listener.SaveListener
+import cn.bmob.v3.listener.*
 import com.example.courseselectiondemo.CourseSelectionApplication
 import com.example.courseselectiondemo.Student
 
@@ -57,7 +54,17 @@ class StudentImpl : StudentInterface {
         })
     }
 
-    override fun delete(name: String) {
-
+    override fun delete(id: String) {
+        val student = Student()
+        student.objectId = id
+        student.delete(object : UpdateListener() {
+            override fun done(e: BmobException?) {
+                if (e == null) {
+                    Toast.makeText(CourseSelectionApplication.context, "删除成功！", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(CourseSelectionApplication.context, "该用户不存在", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 }
