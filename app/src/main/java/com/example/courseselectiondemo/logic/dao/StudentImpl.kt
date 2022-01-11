@@ -44,14 +44,39 @@ class StudentImpl : StudentInterface {
         student.password = password
         student.save(object : SaveListener<String>() {
             override fun done(objectId: String?, e: BmobException?) {
-                if (e == null) {
-
-                }
-                else {
+                if (e != null) {
                     Log.e("CREATE","Failed!" + e.message)
                 }
             }
         })
+    }
+
+    override fun add(id: String, name: String, password: String) {
+        val bmobQuery = BmobQuery<Student>()
+        bmobQuery.addWhereEqualTo("id", id)
+        bmobQuery.findObjects(object : FindListener<Student>() {
+            override fun done(list :List<Student>, e : BmobException?) {
+                if (e == null) {
+                    if (list.isEmpty()) {
+                        val student = Student()
+                        student.id = id
+                        student.name = name
+                        student.password = password
+                        student.save(object : SaveListener<String>() {
+                            override fun done(objectId: String?, e: BmobException?) {
+                                if (e != null) {
+                                    Log.e("CREATE","Failed!" + e.message)
+                                }
+                            }
+                        })
+                    }
+                    else {
+                        Toast.makeText(CourseSelectionApplication.context, "id不能重复！", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        })
+
     }
 
     override fun delete(id: String) {
