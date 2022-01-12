@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import cn.bmob.v3.Bmob
 import com.example.courseselectiondemo.databinding.ActivityMainBinding
+import com.example.courseselectiondemo.logic.dao.CourseImpl
 import com.example.courseselectiondemo.logic.dao.StudentImpl
+import com.example.courseselectiondemo.logic.dao.TeacherImpl
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,10 +24,14 @@ class MainActivity : AppCompatActivity() {
                 student.query(binding.uid.text.toString(), binding.upassword.text.toString())
             }
             else if (binding.teacher.isChecked) {
-                Toast.makeText(CourseSelectionApplication.context, "您选择的是教师功能，暂未实现", Toast.LENGTH_SHORT).show()
+                val teacher = TeacherImpl()
+                teacher.query(binding.uid.text.toString(), binding.upassword.text.toString())
+//                Toast.makeText(CourseSelectionApplication.context, "您选择的是教师功能，暂未实现", Toast.LENGTH_SHORT).show()
             }
             else if (binding.admin.isChecked) {
-                Toast.makeText(CourseSelectionApplication.context, "您选择的是管理员功能，暂未实现", Toast.LENGTH_SHORT).show()
+                val admin = TeacherImpl()
+                admin.query(binding.uid.text.toString(), binding.upassword.text.toString())
+//                Toast.makeText(CourseSelectionApplication.context, "您选择的是管理员功能，暂未实现", Toast.LENGTH_SHORT).show()
             }
             else {
                 Toast.makeText(CourseSelectionApplication.context, "Error!", Toast.LENGTH_SHORT).show()
@@ -40,8 +46,8 @@ class MainActivity : AppCompatActivity() {
 //            student.add("钟俊豪", "123456")
 //        }
         binding.button.setOnClickListener {
-            val student = StudentImpl()
-            student.deleteById("3118000020")
+            val course = CourseImpl()
+            course.add("测试", "公共基础课", 1.5)
         }
     }
 
