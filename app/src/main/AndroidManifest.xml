@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseSelectionDemo">
         <activity
+            android:name=".ui.ShowCourse"
+            android:exported="false" />
+        <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login" />
@@ -33,7 +36,7 @@
 
         <provider
             android:name="cn.bmob.v3.util.BmobContentProvider"
-            android:authorities="com.example.courseselectiondemo.BmobContentProvider"></provider>
+            android:authorities="com.example.courseselectiondemo.BmobContentProvider" />
     </application>
 
 </manifest>

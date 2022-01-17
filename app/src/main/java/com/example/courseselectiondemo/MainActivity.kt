@@ -1,7 +1,9 @@
 package com.example.courseselectiondemo
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import cn.bmob.v3.Bmob
@@ -9,6 +11,11 @@ import com.example.courseselectiondemo.databinding.ActivityMainBinding
 import com.example.courseselectiondemo.logic.dao.CourseImpl
 import com.example.courseselectiondemo.logic.dao.StudentImpl
 import com.example.courseselectiondemo.logic.dao.TeacherImpl
+import com.example.courseselectiondemo.ui.ShowCourse
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,8 +53,8 @@ class MainActivity : AppCompatActivity() {
 //            student.add("钟俊豪", "123456")
 //        }
         binding.button.setOnClickListener {
-            val course = CourseImpl()
-            course.add("测试", "公共基础课", 1.5)
+            val intent = Intent(this, ShowCourse::class.java)
+            startActivity(intent)
         }
     }
 
