@@ -112,6 +112,7 @@ class MainActivity : AppCompatActivity() {
             else {
                 Toast.makeText(CourseSelectionApplication.context, "Error!", Toast.LENGTH_SHORT).show()
             }
+
         }
         binding.button.setOnClickListener {
             val intent = Intent(this, ShowCourse::class.java)
