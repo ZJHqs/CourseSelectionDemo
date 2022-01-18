@@ -3,19 +3,13 @@ package com.example.courseselectiondemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import cn.bmob.v3.Bmob
 import com.example.courseselectiondemo.databinding.ActivityMainBinding
-import com.example.courseselectiondemo.logic.dao.CourseImpl
 import com.example.courseselectiondemo.logic.dao.StudentImpl
 import com.example.courseselectiondemo.logic.dao.TeacherImpl
 import com.example.courseselectiondemo.ui.ShowCourse
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         Bmob.initialize(CourseSelectionApplication.context, "b376a5290dd966c9d1444e85117e42d4")
         binding.login.setOnClickListener {
+            User.objectId = binding.uid.text.toString()
             if (binding.student.isChecked) {
                 val student = StudentImpl()
                 student.query(binding.uid.text.toString(), binding.upassword.text.toString())

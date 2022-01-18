@@ -15,6 +15,13 @@ class CourseAdapter(val courseList: List<Course>) :
             val credit : TextView = view.findViewById(R.id.credit)
             val type : TextView = view.findViewById(R.id.type)
         }
+    lateinit var mOnItemClickListener: OnItemClickListener
+    interface OnItemClickListener {
+        fun onClick(position: Int)
+    }
+    fun setOnItemCLickListener(onItemClickListener: OnItemClickListener) {
+        this.mOnItemClickListener = onItemClickListener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -27,10 +34,10 @@ class CourseAdapter(val courseList: List<Course>) :
         holder.cname.text = course.name
         holder.credit.text = course.credit.toString()
         holder.type.text = course.type
+        holder.itemView.setOnClickListener { mOnItemClickListener.onClick(position) }
     }
 
     override fun getItemCount(): Int {
         return courseList.size
     }
-
 }

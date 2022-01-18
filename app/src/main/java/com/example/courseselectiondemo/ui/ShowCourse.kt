@@ -3,12 +3,15 @@ package com.example.courseselectiondemo.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
 import com.example.courseselectiondemo.Course
+import com.example.courseselectiondemo.CourseHelper
+import com.example.courseselectiondemo.CourseSelectionApplication
 import com.example.courseselectiondemo.R
 
 class ShowCourse : AppCompatActivity() {
@@ -24,8 +27,14 @@ class ShowCourse : AppCompatActivity() {
                     recyclerView.layoutManager = layoutManager
                     val adapter = CourseAdapter(list)
                     recyclerView.adapter = adapter
+                    adapter.setOnItemCLickListener(object : CourseAdapter.OnItemClickListener {
+                        override fun onClick(position: Int) {
+                            CourseHelper.
+                        }
+                    })
                 }
             }
         })
+
     }
 }
