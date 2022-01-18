@@ -29,7 +29,6 @@ class StudentImpl : StudentInterface {
                     else {
                         Toast.makeText(CourseSelectionApplication.context, "该用户不存在！", Toast.LENGTH_SHORT).show()
                     }
-//                    Log.d("QUERY", ""+list.size)
                 }
                 else {
                     Log.e("BMOB", e.toString())

@@ -18,6 +18,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseSelectionDemo">
         <activity
+            android:name=".ui.admin.AdminMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.teacher.TeacherMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.student.StudentMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ShowCourse"
             android:exported="false" />
         <activity

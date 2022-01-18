@@ -10,7 +10,6 @@ import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
 import com.example.courseselectiondemo.Course
-import com.example.courseselectiondemo.CourseHelper
 import com.example.courseselectiondemo.CourseSelectionApplication
 import com.example.courseselectiondemo.R
 
@@ -29,7 +28,7 @@ class ShowCourse : AppCompatActivity() {
                     recyclerView.adapter = adapter
                     adapter.setOnItemCLickListener(object : CourseAdapter.OnItemClickListener {
                         override fun onClick(position: Int) {
-                            CourseHelper.
+                            Toast.makeText(CourseSelectionApplication.context, "您点击的是 $position 行！", Toast.LENGTH_SHORT).show()
                         }
                     })
                 }
