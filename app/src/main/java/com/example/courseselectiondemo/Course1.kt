@@ -6,6 +6,7 @@ class Course1 : BmobObject() {
     var cid : String = ""
     var name : String = ""
     var tid : String = ""
-    var selected_num : Int? = null
-    var max_num : Int? = null
+    var selected_num : Int = 0
+    var max_num : Int = 0
+    var address : String = ""
 }

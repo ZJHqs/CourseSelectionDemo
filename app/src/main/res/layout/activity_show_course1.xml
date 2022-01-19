@@ -51,4 +51,10 @@
             android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
+<!--    <fragment-->
+<!--        android:id="@+id/detail_course_fragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--    </fragment>-->
 </layout>
