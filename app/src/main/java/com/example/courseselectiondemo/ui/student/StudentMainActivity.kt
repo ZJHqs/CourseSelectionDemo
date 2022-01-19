@@ -28,5 +28,9 @@ class StudentMainActivity : AppCompatActivity() {
             val intent = Intent(this, ShowOptionalCourseActivity::class.java)
             startActivity(intent)
         }
+        binding.updateStudentData.setOnClickListener {
+            val intent = Intent(this, UpdateDataActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

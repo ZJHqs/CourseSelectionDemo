@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseSelectionDemo">
         <activity
+            android:name=".ui.student.UpdateDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.student.ShowOptionalCourseActivity"
             android:exported="false"
             android:label="@string/title_activity_show_optional_course"
