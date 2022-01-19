@@ -13,6 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="查看全部课程"/>
+    <Button
+        android:id="@+id/showSelectedCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查看个人选课情况"/>
 
 </LinearLayout>
 </layout>

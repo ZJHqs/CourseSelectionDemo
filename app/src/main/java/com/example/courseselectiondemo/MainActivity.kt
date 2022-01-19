@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         Bmob.initialize(CourseSelectionApplication.context, "b376a5290dd966c9d1444e85117e42d4")
         binding.login.setOnClickListener {
-            User.objectId = binding.uid.text.toString()
+            User.id = binding.uid.text.toString()
             if (binding.student.isChecked) {
                 val bmobQuery1: BmobQuery<Student> = BmobQuery()
                 val bmobQuery2: BmobQuery<Student> = BmobQuery()

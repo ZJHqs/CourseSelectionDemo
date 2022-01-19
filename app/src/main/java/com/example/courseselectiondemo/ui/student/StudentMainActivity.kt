@@ -20,5 +20,9 @@ class StudentMainActivity : AppCompatActivity() {
             val intent = Intent(this, ShowCourse1::class.java)
             startActivity(intent)
         }
+        binding.showSelectedCourse.setOnClickListener {
+            val intent = Intent(this, ShowSelectedCourseActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

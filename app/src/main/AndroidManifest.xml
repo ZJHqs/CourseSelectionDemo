@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseSelectionDemo">
         <activity
+            android:name=".ui.student.ShowSelectedCourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.student.DetailCourseActivity"
             android:exported="false" />
         <activity

@@ -1,5 +1,6 @@
 package com.example.courseselectiondemo
 
 object User {
-    var objectId : String = ""
+    var id : String = ""
+    var name : String = ""
 }
