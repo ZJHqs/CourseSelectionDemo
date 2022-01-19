@@ -6,4 +6,5 @@ class Teacher : BmobObject() {
     var id : String = ""
     var name: String? = null
     var password: String? = null
+    var phone : String = ""
 }

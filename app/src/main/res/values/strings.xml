@@ -14,4 +14,5 @@
     <string name="student">学生</string>
     <string name="teacher">教师</string>
     <string name="admin">管理员</string>
+    <string name="cname">课程名</string>
 </resources>

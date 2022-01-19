@@ -10,6 +10,7 @@ import cn.bmob.v3.Bmob
 import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
+import cn.bmob.v3.listener.SaveListener
 import com.example.courseselectiondemo.databinding.ActivityMainBinding
 import com.example.courseselectiondemo.logic.dao.StudentImpl
 import com.example.courseselectiondemo.logic.dao.TeacherImpl
@@ -112,11 +113,35 @@ class MainActivity : AppCompatActivity() {
             else {
                 Toast.makeText(CourseSelectionApplication.context, "Error!", Toast.LENGTH_SHORT).show()
             }
-
         }
         binding.button.setOnClickListener {
             val intent = Intent(this, ShowCourse::class.java)
             startActivity(intent)
+//            for (i in 1..30) {
+//                val teacher = Teacher()
+//                teacher.id = (10000 + i).toString()
+//                teacher.name = "张三"
+//                teacher.password = "123456"
+//                teacher.save(object : SaveListener<String>() {
+//                    override fun done(objectId : String?, e : BmobException?) {
+//                        if (e != null) {
+//                            Log.e("MainActivity:","ERROR!")
+//                        }
+//                    }
+//                })
+//                val course1 = Course1()
+//                course1.cid = "c" + (100000 + i)
+//                course1.tid = (10000 + i).toString()
+//                course1.selected_num = 0
+//                course1.max_num = 50
+//                course1.save(object : SaveListener<String>() {
+//                    override fun done(objectId : String?, e : BmobException?) {
+//                        if (e != null) {
+//                            Log.e("MainActivity:", "Error!")
+//                        }
+//                    }
+//                })
+//            }
         }
     }
 

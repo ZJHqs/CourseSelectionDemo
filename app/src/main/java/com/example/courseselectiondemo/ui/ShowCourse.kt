@@ -14,6 +14,7 @@ import com.example.courseselectiondemo.CourseSelectionApplication
 import com.example.courseselectiondemo.R
 
 class ShowCourse : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_course)
@@ -34,6 +35,5 @@ class ShowCourse : AppCompatActivity() {
                 }
             }
         })
-
     }
 }
