@@ -18,6 +18,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="查看个人选课情况"/>
+    <Button
+        android:id="@+id/showOptionalCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查看可选课程"/>
 
 </LinearLayout>
 </layout>
