@@ -3,6 +3,7 @@ package com.example.courseselectiondemo.ui.student
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
@@ -47,6 +48,18 @@ class DetailCourseActivity : AppCompatActivity() {
                         binding.selectOrGiveUp.text = "退选"
                     }
                     else {
+                        val query3 = BmobQuery<Course1>()
+                        query3.addWhereEqualTo("cid", CourseHelper1.cid)
+                        query3.findObjects(object : FindListener<Course1>() {
+                            override fun done(list3: List<Course1>, e1 : BmobException?) {
+                                if (e1 == null) {
+                                    if (list3[0].selected_num == list3[0].max_num) {
+                                        binding.selectOrGiveUp.text = "人数已满"
+                                        binding.selectOrGiveUp.isEnabled = false
+                                    }
+                                }
+                            }
+                        })
                         binding.selectOrGiveUp.text = "选课"
                     }
                 }
@@ -54,13 +67,17 @@ class DetailCourseActivity : AppCompatActivity() {
         })
         binding.selectOrGiveUp.setOnClickListener {
             if (binding.selectOrGiveUp.text == "退选") {
+                /**
+                 * 先判断是否可选
+                 */
 
             }
             else if (binding.selectOrGiveUp.text == "选课") {
 
             }
             else {
-                Log.e("SelectOrGiveUp", "Button.text未赋值")
+                Toast.makeText(CourseSelectionApplication.context, "操作过于繁忙，请稍后再试", Toast.LENGTH_SHORT).show()
+//                Log.e("SelectOrGiveUp", "Button.text未赋值")
             }
         }
         binding.returnToMain.setOnClickListener {
