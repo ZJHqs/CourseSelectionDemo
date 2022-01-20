@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
+import cn.bmob.v3.listener.SaveListener
 import cn.bmob.v3.listener.UpdateListener
 import com.example.courseselectiondemo.*
 import com.example.courseselectiondemo.databinding.ActivityDetailCourseBinding
@@ -72,6 +73,8 @@ class DetailCourseActivity : AppCompatActivity() {
             when (binding.selectOrGiveUp.text) {
                 "退选" -> {
 
+                    binding.selectOrGiveUp.text = "操作中..."
+                    binding.selectOrGiveUp.isEnabled = false
                     /**
                      * 修改Course表中selected_num的值（减一）
                      */
@@ -88,6 +91,7 @@ class DetailCourseActivity : AppCompatActivity() {
                                 Log.e("UpdateCourse", "" + updateException.message)
                             }
                             else {
+
                                 binding.detailCourseSelectedNum.text = updateCourse.selected_num.toString()
                                 CourseHelper1.selected_num--
                             }
@@ -125,9 +129,11 @@ class DetailCourseActivity : AppCompatActivity() {
                                     override fun done(deleteException: BmobException?) {
                                         if (deleteException != null) {
                                             Log.e("DeleteCourseSelection", "" + deleteException.message)
+
                                         }
                                         else {
-
+                                            binding.selectOrGiveUp.isEnabled = true
+                                            binding.selectOrGiveUp.text = "选课"
                                         }
                                     }
                                 })
@@ -135,9 +141,49 @@ class DetailCourseActivity : AppCompatActivity() {
                         }
                     })
                     Toast.makeText(CourseSelectionApplication.context, "退选成功", Toast.LENGTH_SHORT).show()
+
                 }
                 "选课" -> {
-
+                    /**
+                     * 因为能显示该选项的必然是符合条件的，所以不用考虑选课人数过多而导致的问题（非并发环境下）
+                     * 为避免用户连续点击按钮而导致的不可预知的错误，先将button设置为不可点击
+                     */
+                    binding.selectOrGiveUp.text = "操作中..."
+                    binding.selectOrGiveUp.isEnabled = false
+                    /**
+                     * 新增一个CourseSelection项
+                     *
+                     */
+                    val newCourseSelection  = CourseSelection()
+                    newCourseSelection.sid = User.id
+                    newCourseSelection.cid = CourseHelper1.cid
+                    newCourseSelection.save(object : SaveListener<String>() {
+                        override fun done(objectId : String, newCourseSelectionException: BmobException?) {
+                            if (newCourseSelectionException != null) {
+                                Log.e("NewCourseSelection", ""+ newCourseSelectionException.message)
+                            }
+                        }
+                    })
+                    val updateCourse = Course1()
+                    updateCourse.cid = CourseHelper1.cid
+                    updateCourse.name = CourseHelper1.cname
+                    updateCourse.tid = CourseHelper1.tid
+                    updateCourse.selected_num = CourseHelper1.selected_num + 1
+                    updateCourse.max_num = CourseHelper1.max_num
+                    updateCourse.address = CourseHelper1.address
+                    updateCourse.update(CourseHelper1.objectId,object : UpdateListener() {
+                        override fun done(updateException: BmobException?) {
+                            if (updateException != null) {
+                                Log.e("UpdateCourse", "" + updateException.message)
+                            }
+                            else {
+                                binding.detailCourseSelectedNum.text = updateCourse.selected_num.toString()
+                                CourseHelper1.selected_num++
+                                binding.selectOrGiveUp.isEnabled = true
+                                binding.selectOrGiveUp.text = "退选"
+                            }
+                        }
+                    })
                 }
                 else -> {
                     //TODO
