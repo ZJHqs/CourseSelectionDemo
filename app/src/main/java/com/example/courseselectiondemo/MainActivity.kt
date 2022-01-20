@@ -10,11 +10,7 @@ import cn.bmob.v3.Bmob
 import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
-import cn.bmob.v3.listener.SaveListener
-import cn.bmob.v3.listener.UpdateListener
 import com.example.courseselectiondemo.databinding.ActivityMainBinding
-import com.example.courseselectiondemo.logic.dao.StudentImpl
-import com.example.courseselectiondemo.logic.dao.TeacherImpl
 import com.example.courseselectiondemo.ui.ShowCourse
 import com.example.courseselectiondemo.ui.admin.AdminMainActivity
 import com.example.courseselectiondemo.ui.student.StudentMainActivity
@@ -116,45 +112,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.button.setOnClickListener {
-//            val student = Student()
-//            student.id = "123"
-//            student.password = "123"
-//            student.name = "ZJH"
-//            student.phone = "10010"
-//            student.update("TNcZX77X", object : UpdateListener() {
-//                override fun done(e: BmobException?) {
-//                    if (e != null) {
-//                        Toast.makeText(CourseSelectionApplication.context, "修改失败！", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//            })
             val intent = Intent(this, ShowCourse::class.java)
             startActivity(intent)
-//            for (i in 1..30) {
-//                val teacher = Teacher()
-//                teacher.id = (10000 + i).toString()
-//                teacher.name = "张三"
-//                teacher.password = "123456"
-//                teacher.save(object : SaveListener<String>() {
-//                    override fun done(objectId : String?, e : BmobException?) {
-//                        if (e != null) {
-//                            Log.e("MainActivity:","ERROR!")
-//                        }
-//                    }
-//                })
-//                val course1 = Course1()
-//                course1.cid = "c" + (100000 + i)
-//                course1.tid = (10000 + i).toString()
-//                course1.selected_num = 0
-//                course1.max_num = 50
-//                course1.save(object : SaveListener<String>() {
-//                    override fun done(objectId : String?, e : BmobException?) {
-//                        if (e != null) {
-//                            Log.e("MainActivity:", "Error!")
-//                        }
-//                    }
-//                })
-//            }
         }
     }
 

@@ -8,7 +8,6 @@
         android:textSize="18sp"
         android:gravity="center"
         android:layout_weight="1"
-        android:text="@string/cname"
         android:layout_width="0dp"
         android:layout_height="100dp" />
     <TextView
@@ -16,7 +15,6 @@
         android:textSize="18sp"
         android:gravity="center"
         android:layout_weight="1"
-        android:text="授课教师"
         android:layout_width="0dp"
         android:layout_height="100dp" />
 
@@ -25,7 +23,6 @@
         android:textSize="18sp"
         android:gravity="center"
         android:layout_weight="1"
-        android:text="已选人数"
         android:layout_width="0dp"
         android:layout_height="100dp" />
 
@@ -34,7 +31,6 @@
         android:textSize="20sp"
         android:gravity="center"
         android:layout_weight="1"
-        android:text="课程容量"
         android:layout_width="0dp"
         android:layout_height="100dp" />
 
