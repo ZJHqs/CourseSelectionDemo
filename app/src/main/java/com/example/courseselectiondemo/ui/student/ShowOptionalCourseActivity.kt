@@ -57,6 +57,7 @@ class ShowOptionalCourseActivity : AppCompatActivity() {
                                     recyclerView.adapter = adapter
                                     adapter.setOnItemCLickListener(object : CourseAdapter1.OnItemClickListener {
                                         override fun onClick(position: Int) {
+                                            CourseHelper1.objectId = list3[position].objectId
 //                            Toast.makeText(CourseSelectionApplication.context, "您点击的是 $position 行！", Toast.LENGTH_SHORT).show()
                                             CourseHelper1.cid = list3[position].cid
                                             CourseHelper1.cname = list3[position].name
@@ -107,6 +108,9 @@ class ShowOptionalCourseActivity : AppCompatActivity() {
                                             })
                                             val intent = Intent(this@ShowOptionalCourseActivity, DetailCourseActivity::class.java)
                                             startActivity(intent)
+                                            //这里是为了让程序不出现错误
+                                            //TODO
+                                            finish()
                                         }
                                     })
                                 }

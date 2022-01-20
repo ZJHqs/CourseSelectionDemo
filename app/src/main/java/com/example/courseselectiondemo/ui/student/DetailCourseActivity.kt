@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import cn.bmob.v3.BmobQuery
 import cn.bmob.v3.exception.BmobException
 import cn.bmob.v3.listener.FindListener
+import cn.bmob.v3.listener.UpdateListener
 import com.example.courseselectiondemo.*
 import com.example.courseselectiondemo.databinding.ActivityDetailCourseBinding
 
@@ -48,9 +49,9 @@ class DetailCourseActivity : AppCompatActivity() {
                         binding.selectOrGiveUp.text = "退选"
                     }
                     else {
-                        val query3 = BmobQuery<Course1>()
-                        query3.addWhereEqualTo("cid", CourseHelper1.cid)
-                        query3.findObjects(object : FindListener<Course1>() {
+                        val query4 = BmobQuery<Course1>()
+                        query4.addWhereEqualTo("cid", CourseHelper1.cid)
+                        query4.findObjects(object : FindListener<Course1>() {
                             override fun done(list3: List<Course1>, e1 : BmobException?) {
                                 if (e1 == null) {
                                     if (list3[0].selected_num == list3[0].max_num) {
@@ -68,18 +69,79 @@ class DetailCourseActivity : AppCompatActivity() {
             }
         })
         binding.selectOrGiveUp.setOnClickListener {
-            if (binding.selectOrGiveUp.text == "退选") {
-                /**
-                 * 先判断是否可选
-                 */
+            when (binding.selectOrGiveUp.text) {
+                "退选" -> {
 
-            }
-            else if (binding.selectOrGiveUp.text == "选课") {
+                    /**
+                     * 修改Course表中selected_num的值（减一）
+                     */
+                    val updateCourse = Course1()
+                    updateCourse.cid = CourseHelper1.cid
+                    updateCourse.name = CourseHelper1.cname
+                    updateCourse.tid = CourseHelper1.tid
+                    updateCourse.selected_num = CourseHelper1.selected_num - 1
+                    updateCourse.max_num = CourseHelper1.max_num
+                    updateCourse.address = CourseHelper1.address
+                    updateCourse.update(CourseHelper1.objectId,object : UpdateListener() {
+                        override fun done(updateException: BmobException?) {
+                            if (updateException != null) {
+                                Log.e("UpdateCourse", "" + updateException.message)
+                            }
+                            else {
+                                binding.detailCourseSelectedNum.text = updateCourse.selected_num.toString()
+                                CourseHelper1.selected_num--
+                            }
+                        }
+                    })
 
-            }
-            else {
-                Toast.makeText(CourseSelectionApplication.context, "操作过于繁忙，请稍后再试", Toast.LENGTH_SHORT).show()
-//                Log.e("SelectOrGiveUp", "Button.text未赋值")
+                    /**
+                     * 先将objectId读出来以便后续操作
+                     */
+
+                    val deleteQuery1 = BmobQuery<CourseSelection>()
+                    val deleteQuery2 = BmobQuery<CourseSelection>()
+                    deleteQuery1.addWhereEqualTo("sid", User.id)
+                    deleteQuery2.addWhereEqualTo("cid", CourseHelper1.cid)
+                    val deleteQueries = ArrayList<BmobQuery<CourseSelection>>()
+                    deleteQueries.add(deleteQuery1)
+                    deleteQueries.add(deleteQuery2)
+                    val deleteQuery3 = BmobQuery<CourseSelection>()
+                    deleteQuery3.and(deleteQueries)
+
+
+                    /**
+                     * 修改CourseSelection表
+                     * 删除一项数据
+                     */
+
+                    deleteQuery3.findObjects(object : FindListener<CourseSelection>() {
+                        override fun done(deleteList1 : List<CourseSelection>, e : BmobException?) {
+                            if (e == null) {
+                                //读出objectId
+                                val objectId = deleteList1[0].objectId
+                                val courseSelection = CourseSelection()
+                                courseSelection.objectId = objectId
+                                courseSelection.delete(object : UpdateListener() {
+                                    override fun done(deleteException: BmobException?) {
+                                        if (deleteException != null) {
+                                            Log.e("DeleteCourseSelection", "" + deleteException.message)
+                                        }
+                                        else {
+
+                                        }
+                                    }
+                                })
+                            }
+                        }
+                    })
+                    Toast.makeText(CourseSelectionApplication.context, "退选成功", Toast.LENGTH_SHORT).show()
+                }
+                "选课" -> {
+
+                }
+                else -> {
+                    //TODO
+                }
             }
         }
         binding.returnToMain.setOnClickListener {

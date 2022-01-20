@@ -1,6 +1,7 @@
 package com.example.courseselectiondemo
 
 object CourseHelper1 {
+    var objectId : String = ""
     var cid : String = ""
     var cname: String = ""
     var tid : String = ""

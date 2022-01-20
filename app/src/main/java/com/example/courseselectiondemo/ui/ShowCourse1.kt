@@ -33,6 +33,7 @@ class ShowCourse1 : AppCompatActivity() {
                     recyclerView.adapter = adapter
                     adapter.setOnItemCLickListener(object : CourseAdapter1.OnItemClickListener {
                         override fun onClick(position: Int) {
+                            CourseHelper1.objectId = list[position].objectId
 //                            Toast.makeText(CourseSelectionApplication.context, "您点击的是 $position 行！", Toast.LENGTH_SHORT).show()
                             CourseHelper1.cid = list[position].cid
                             CourseHelper1.cname = list[position].name
@@ -52,6 +53,9 @@ class ShowCourse1 : AppCompatActivity() {
                             })
                             val intent = Intent(this@ShowCourse1, DetailCourseActivity::class.java)
                             startActivity(intent)
+                            //这里是为了让程序不出现错误
+                            //TODO
+                            finish()
                         }
                     })
                 }
