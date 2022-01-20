@@ -39,6 +39,7 @@ class ShowOptionalCourseActivity : AppCompatActivity() {
                     adapter.setOnItemCLickListener(object : CourseAdapter1.OnItemClickListener {
                         override fun onClick(position: Int) {
 //                            Toast.makeText(CourseSelectionApplication.context, "您点击的是 $position 行！", Toast.LENGTH_SHORT).show()
+                            CourseHelper1.cid = list[position].cid
                             CourseHelper1.cname = list[position].name
                             CourseHelper1.tid = list[position].tid
                             CourseHelper1.address = list[position].address
