@@ -33,6 +33,53 @@ class ShowSelectedCourseActivity : AppCompatActivity() {
             override fun done(list : List<CourseSelection>, e : BmobException?) {
                 if (e == null) {
                     if (list.isNotEmpty()) {
+                        val set = HashSet<String>()
+                        for (courseSelection in list) {
+                            set.add(courseSelection.cid)
+                        }
+                        val list1 = ArrayList<Course1>()
+                        val query1 = BmobQuery<Course1>()
+                        query1.findObjects(object : FindListener<Course1>() {
+                            override fun done(list2: List<Course1>, queryException : BmobException?) {
+                                for (course in list2) {
+                                    if (set.contains(course.cid)) {
+                                        list1.add(course)
+                                    }
+                                }
+                                val layoutManager = LinearLayoutManager(this@ShowSelectedCourseActivity)
+                                val recyclerView : RecyclerView = findViewById(R.id.courseRecyclerView1)
+                                recyclerView.layoutManager = layoutManager
+                                val adapter = CourseAdapter1(list1)
+                                recyclerView.adapter = adapter
+                                adapter.setOnItemCLickListener(object : CourseAdapter1.OnItemClickListener {
+                                    override fun onClick(position: Int) {
+                                        CourseHelper1.objectId = list1[position].objectId
+                                        CourseHelper1.cid = list1[position].cid
+                                        CourseHelper1.cname = list1[position].name
+                                        CourseHelper1.tid = list1[position].tid
+                                        CourseHelper1.address = list1[position].address
+                                        CourseHelper1.selected_num = list1[position].selected_num
+                                        CourseHelper1.max_num = list1[position].max_num
+                                        val query2 = BmobQuery<Teacher>()
+                                        query2.addWhereEqualTo("id", list1[position].tid)
+                                        query2.findObjects(object : FindListener<Teacher>() {
+                                            override fun done(list3 : List<Teacher>, e : BmobException?) {
+                                                if (e == null) {
+                                                    CourseHelper1.tname = list3[0].name.toString()
+                                                    CourseHelper1.phone = list3[0].phone
+                                                }
+                                            }
+                                        })
+                                        val intent = Intent(this@ShowSelectedCourseActivity, DetailCourseActivity::class.java)
+                                        startActivity(intent)
+                                        //这里是为了让程序不出现错误
+                                        //TODO
+                                        finish()
+                                    }
+                                })
+                            }
+                        })
+                        /*
                         val query = BmobQuery<Course1>()
                         query.addWhereEqualTo("cid", list[0].cid)
                         query.findObjects(object : FindListener<Course1>() {
@@ -46,7 +93,6 @@ class ShowSelectedCourseActivity : AppCompatActivity() {
                                     adapter.setOnItemCLickListener(object : CourseAdapter1.OnItemClickListener {
                                         override fun onClick(position: Int) {
                                             CourseHelper1.objectId = list[position].objectId
-//                            Toast.makeText(CourseSelectionApplication.context, "您点击的是 $position 行！", Toast.LENGTH_SHORT).show()
                                             CourseHelper1.cid = list[position].cid
                                             CourseHelper1.cname = list[position].name
                                             CourseHelper1.tid = list[position].tid
@@ -73,6 +119,7 @@ class ShowSelectedCourseActivity : AppCompatActivity() {
                                 }
                             }
                         })
+                         */
                     }
                     else {
                         Toast.makeText(CourseSelectionApplication.context, "您还未选课！", Toast.LENGTH_SHORT).show()
