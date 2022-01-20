@@ -57,10 +57,12 @@ class DetailCourseActivity : AppCompatActivity() {
                                         binding.selectOrGiveUp.text = "人数已满"
                                         binding.selectOrGiveUp.isEnabled = false
                                     }
+                                    else {
+                                        binding.selectOrGiveUp.text = "选课"
+                                    }
                                 }
                             }
                         })
-                        binding.selectOrGiveUp.text = "选课"
                     }
                 }
             }
