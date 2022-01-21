@@ -10,27 +10,27 @@
 
 1. 学生
 
-   **选课**
+   **选课**	√
 
-   **退选**
+   **退选**	√
 
-   查看全部课程
+   查看全部课程	√
 
-   查看可选课程
+   查看可选课程	√
 
-   查看课程详细信息
+   查看课程详细信息	√
 
-   查看个人已选课程
+   查看个人已选课程	√
 
-   查看教授课程的教师信息
+   查看教授课程的教师信息	√
 
-   修改个人信息（家长电话、住址等）
+   修改个人信息（家长电话、住址等）	√
 
 2. 教师
 
-   查看个人授课
+   查看个人授课	√
 
-   查看单门课程的学生信息
+   查看单门课程的学生信息	√
 
    修改个人信息
 
@@ -69,7 +69,7 @@
    | password | 密码     | String   |      |
    | phone    | 电话号   | String   |      |
 
-   
+
 
 3. 课程表
 
@@ -81,7 +81,7 @@
    | selected_num | 已选课程人数 | int      |      |
    | max_num      | 课程容量     | int      |      |
 
-   
+
 
 4. 选课表
 
@@ -134,7 +134,7 @@
    }
    ```
 
-   
+
 
 2. 教师登录
 
@@ -168,7 +168,7 @@
                }
    ```
 
-   
+
 
 3. 管理员登录
 
@@ -202,7 +202,7 @@
                }
    ```
 
-### 学生功能
+### 学生功能 √
 
 1. 查看全部课程 √
 
@@ -226,7 +226,7 @@
            })
    ```
 
-   
+
 
 2. 查看课程详细信息&&查看授课教师信息 √
 
@@ -236,7 +236,7 @@
 
    ```Kotlin
    package com.example.courseselectiondemo.ui.student
-   
+
    import androidx.appcompat.app.AppCompatActivity
    import android.os.Bundle
    import android.widget.TextView
@@ -246,7 +246,7 @@
    import com.example.courseselectiondemo.CourseHelper1
    import com.example.courseselectiondemo.R
    import com.example.courseselectiondemo.Teacher
-   
+
    class DetailCourseActivity : AppCompatActivity() {
        override fun onCreate(savedInstanceState: Bundle?) {
            super.onCreate(savedInstanceState)
@@ -277,13 +277,13 @@
    }
    ```
 
-   
+
 
 3. 查看个人选课信息 √
 
    ```kotlin
    package com.example.courseselectiondemo.ui.student
-   
+
    import androidx.appcompat.app.AppCompatActivity
    import android.os.Bundle
    import android.widget.Toast
@@ -296,11 +296,11 @@
    import com.example.courseselectiondemo.*
    import com.example.courseselectiondemo.databinding.ActivityShowCourse1Binding
    import com.example.courseselectiondemo.ui.CourseAdapter1
-   
+
    class ShowSelectedCourseActivity : AppCompatActivity() {
-   
+
        private lateinit var binding: ActivityShowCourse1Binding
-   
+
        override fun onCreate(savedInstanceState: Bundle?) {
            super.onCreate(savedInstanceState)
    //        setContentView(R.layout.activity_show_selected_course)
@@ -331,18 +331,18 @@
                    }
                }
            })
-   
+
        }
    }
    ```
 
-   
+
 
 4. 查看可选课程 √
 
    ```kotlin
    package com.example.courseselectiondemo.ui.student
-   
+
    import androidx.appcompat.app.AppCompatActivity
    import android.os.Bundle
    import androidx.databinding.DataBindingUtil
@@ -355,10 +355,10 @@
    import com.example.courseselectiondemo.R
    import com.example.courseselectiondemo.databinding.ActivityShowCourse1Binding
    import com.example.courseselectiondemo.ui.CourseAdapter1
-   
+
    class ShowOptionalCourseActivity : AppCompatActivity() {
        private lateinit var binding: ActivityShowCourse1Binding
-   
+
        override fun onCreate(savedInstanceState: Bundle?) {
            super.onCreate(savedInstanceState)
    //        setContentView(R.layout.activity_show_selected_course)
@@ -385,13 +385,13 @@
    }
    ```
 
-   
+
 
 5. 修改个人信息（家长电话、住址等）
 
    ```kotlin
    package com.example.courseselectiondemo.ui.student
-   
+
    import androidx.appcompat.app.AppCompatActivity
    import android.os.Bundle
    import android.util.Log
@@ -406,11 +406,11 @@
    import com.example.courseselectiondemo.Student
    import com.example.courseselectiondemo.User
    import com.example.courseselectiondemo.databinding.ActivityUpdateDataBinding
-   
+
    class UpdateDataActivity : AppCompatActivity() {
-   
+
        private lateinit var binding: ActivityUpdateDataBinding
-   
+
        override fun onCreate(savedInstanceState: Bundle?) {
            super.onCreate(savedInstanceState)
    //        setContentView(R.layout.activity_update_data)
@@ -462,13 +462,13 @@
    }
    ```
 
-   
 
-6. 选课
+
+6. 选课 √
 
    ```kotlin
    "退选" -> {
-   
+
                        binding.selectOrGiveUp.text = "操作中..."
                        binding.selectOrGiveUp.isEnabled = false
                        /**
@@ -487,17 +487,17 @@
                                    Log.e("UpdateCourse", "" + updateException.message)
                                }
                                else {
-   
+
                                    binding.detailCourseSelectedNum.text = updateCourse.selected_num.toString()
                                    CourseHelper1.selected_num--
                                }
                            }
                        })
-   
+
                        /**
                         * 先将objectId读出来以便后续操作
                         */
-   
+
                        val deleteQuery1 = BmobQuery<CourseSelection>()
                        val deleteQuery2 = BmobQuery<CourseSelection>()
                        deleteQuery1.addWhereEqualTo("sid", User.id)
@@ -507,13 +507,13 @@
                        deleteQueries.add(deleteQuery2)
                        val deleteQuery3 = BmobQuery<CourseSelection>()
                        deleteQuery3.and(deleteQueries)
-   
-   
+
+
                        /**
                         * 修改CourseSelection表
                         * 删除一项数据
                         */
-   
+
                        deleteQuery3.findObjects(object : FindListener<CourseSelection>() {
                            override fun done(deleteList1 : List<CourseSelection>, e : BmobException?) {
                                if (e == null) {
@@ -525,7 +525,7 @@
                                        override fun done(deleteException: BmobException?) {
                                            if (deleteException != null) {
                                                Log.e("DeleteCourseSelection", "" + deleteException.message)
-   
+
                                            }
                                            else {
                                                binding.selectOrGiveUp.isEnabled = true
@@ -537,17 +537,17 @@
                            }
                        })
                        Toast.makeText(CourseSelectionApplication.context, "退选成功", Toast.LENGTH_SHORT).show()
-   
+
                    }
    ```
 
-   
 
-7. 退选
+
+7. 退选 √
 
    ```kotlin
    "退选" -> {
-   
+
                        binding.selectOrGiveUp.text = "操作中..."
                        binding.selectOrGiveUp.isEnabled = false
                        /**
@@ -566,17 +566,17 @@
                                    Log.e("UpdateCourse", "" + updateException.message)
                                }
                                else {
-   
+
                                    binding.detailCourseSelectedNum.text = updateCourse.selected_num.toString()
                                    CourseHelper1.selected_num--
                                }
                            }
                        })
-   
+
                        /**
                         * 先将objectId读出来以便后续操作
                         */
-   
+
                        val deleteQuery1 = BmobQuery<CourseSelection>()
                        val deleteQuery2 = BmobQuery<CourseSelection>()
                        deleteQuery1.addWhereEqualTo("sid", User.id)
@@ -586,13 +586,13 @@
                        deleteQueries.add(deleteQuery2)
                        val deleteQuery3 = BmobQuery<CourseSelection>()
                        deleteQuery3.and(deleteQueries)
-   
-   
+
+
                        /**
                         * 修改CourseSelection表
                         * 删除一项数据
                         */
-   
+
                        deleteQuery3.findObjects(object : FindListener<CourseSelection>() {
                            override fun done(deleteList1 : List<CourseSelection>, e : BmobException?) {
                                if (e == null) {
@@ -604,7 +604,7 @@
                                        override fun done(deleteException: BmobException?) {
                                            if (deleteException != null) {
                                                Log.e("DeleteCourseSelection", "" + deleteException.message)
-   
+
                                            }
                                            else {
                                                binding.selectOrGiveUp.isEnabled = true
@@ -616,6 +616,151 @@
                            }
                        })
                        Toast.makeText(CourseSelectionApplication.context, "退选成功", Toast.LENGTH_SHORT).show()
-   
+
                    }
    ```
+
+
+
+### 教师功能
+
+1. 查看个人课程	√
+
+   ```kotlin
+   package com.example.courseselectiondemo.ui.teacher
+
+   import android.content.Intent
+   import androidx.appcompat.app.AppCompatActivity
+   import android.os.Bundle
+   import androidx.databinding.DataBindingUtil
+   import androidx.recyclerview.widget.LinearLayoutManager
+   import androidx.recyclerview.widget.RecyclerView
+   import cn.bmob.v3.BmobQuery
+   import cn.bmob.v3.exception.BmobException
+   import cn.bmob.v3.listener.FindListener
+   import com.example.courseselectiondemo.Course1
+   import com.example.courseselectiondemo.CourseHelper1
+   import com.example.courseselectiondemo.R
+   import com.example.courseselectiondemo.User
+   import com.example.courseselectiondemo.databinding.ActivityShowTeachingCourseBinding
+
+   class ShowTeachingCourse : AppCompatActivity() {
+
+       private lateinit var binding: ActivityShowTeachingCourseBinding
+
+       override fun onCreate(savedInstanceState: Bundle?) {
+           super.onCreate(savedInstanceState)
+   //        setContentView(R.layout.activity_show_teaching_course)
+           binding = DataBindingUtil.setContentView(this, R.layout.activity_show_teaching_course)
+       }
+
+       override fun onResume() {
+           super.onResume()
+           val query = BmobQuery<Course1>()
+           query.addWhereEqualTo("tid", User.id)
+           query.findObjects(object : FindListener<Course1>() {
+               override fun done(list: List<Course1>, e : BmobException?) {
+                   if (e == null) {
+                       val layoutManager = LinearLayoutManager(this@ShowTeachingCourse)
+                       val recyclerView : RecyclerView = findViewById(R.id.courseRecyclerView2)
+                       recyclerView.layoutManager = layoutManager
+                       val adapter = CourseAdapter2(list)
+                       recyclerView.adapter = adapter
+                       adapter.setOnItemCLickListener(object : CourseAdapter2.OnItemClickListener {
+                           override fun onClick(position: Int) {
+                               //此处将cid保存起来，以便后续通过cid查找sid
+                               CourseHelper1.cid = list[position].cid
+                               val intent = Intent(this@ShowTeachingCourse, ShowTeachingStudent::class.java)
+                               startActivity(intent)
+                           }
+                       })
+                   }
+               }
+           })
+       }
+   }
+   ```
+
+
+
+2. 查看选择课程的学生信息 √
+
+   ```kotlin
+   package com.example.courseselectiondemo.ui.teacher
+
+   import androidx.appcompat.app.AppCompatActivity
+   import android.os.Bundle
+   import androidx.databinding.DataBindingUtil
+   import androidx.recyclerview.widget.LinearLayoutManager
+   import androidx.recyclerview.widget.RecyclerView
+   import cn.bmob.v3.BmobQuery
+   import cn.bmob.v3.exception.BmobException
+   import cn.bmob.v3.listener.FindListener
+   import com.example.courseselectiondemo.CourseHelper1
+   import com.example.courseselectiondemo.CourseSelection
+   import com.example.courseselectiondemo.R
+   import com.example.courseselectiondemo.Student
+   import com.example.courseselectiondemo.databinding.ActivityShowTeachingStudentBinding
+   import com.example.courseselectiondemo.ui.StudentAdapter
+
+   class ShowTeachingStudent : AppCompatActivity() {
+
+       private lateinit var binding: ActivityShowTeachingStudentBinding
+
+       override fun onCreate(savedInstanceState: Bundle?) {
+           super.onCreate(savedInstanceState)
+           binding = DataBindingUtil.setContentView(this, R.layout.activity_show_teaching_student)
+       }
+
+       override fun onResume() {
+           super.onResume()
+           /**
+            * 通过cid找到所有sid
+            */
+           val query1 = BmobQuery<CourseSelection>()
+           query1.addWhereEqualTo("cid", CourseHelper1.cid)
+           query1.findObjects(object : FindListener<CourseSelection>() {
+               override fun done(list1: List<CourseSelection>, e1 : BmobException?) {
+                   if (e1 == null) {
+                       /**
+                        * 找出全部学生
+                        */
+                       val query2 = BmobQuery<Student>()
+                       query2.findObjects(object : FindListener<Student>() {
+                           override fun done(list2 : List<Student>, e2 : BmobException?) {
+                               if (e2 == null) {
+                                   /**
+                                    * 将所有选该们课程的学生的学生号放入哈希表中
+                                    */
+                                   val list = ArrayList<Student>()
+                                   val set = HashSet<String>()
+                                   for (courseSelection in list1) {
+                                       set.add(courseSelection.sid)
+                                   }
+                                   /**
+                                    * 将需要读出来的Student放入list中
+                                    * list就是我们最终呈现的内容
+                                    */
+                                   for (student in list2) {
+                                       if (set.contains(student.id)) {
+                                           list.add(student)
+                                       }
+                                   }
+                                   val layoutManager = LinearLayoutManager(this@ShowTeachingStudent)
+                                   val recyclerView : RecyclerView = findViewById(R.id.student_recyclerview)
+                                   recyclerView.layoutManager = layoutManager
+                                   val adapter = StudentAdapter(list)
+                                   recyclerView.adapter = adapter
+                               }
+                           }
+                       })
+                   }
+               }
+           })
+       }
+   }
+   ```
+
+3. 修改个人信息
+
+### 管理员功能

@@ -6,28 +6,28 @@
     <TextView
         android:id="@+id/cname2"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:textSize="18sp"
         android:gravity="center"/>
     <TextView
         android:id="@+id/selected_num2"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:textSize="18sp"
         android:gravity="center"/>
     <TextView
         android:id="@+id/max_num2"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:textSize="18sp"
         android:gravity="center"/>
     <TextView
         android:id="@+id/address2"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         android:layout_weight="1"
         android:textSize="18sp"
         android:gravity="center"/>
