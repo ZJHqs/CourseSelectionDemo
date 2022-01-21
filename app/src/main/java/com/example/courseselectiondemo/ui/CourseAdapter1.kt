@@ -16,7 +16,7 @@ class CourseAdapter1(val courseList1: List<Course1>) :
     RecyclerView.Adapter<CourseAdapter1.ViewHolder>(){
         inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view) {
             val cname : TextView = view.findViewById(R.id.cname1)
-            val tid : TextView = view.findViewById(R.id.tid1)
+            val tname : TextView = view.findViewById(R.id.tname1)
             val selected_num1 : TextView = view.findViewById(R.id.selected_num1)
             val max_num1 : TextView = view.findViewById(R.id.max_num1)
         }
@@ -43,7 +43,7 @@ class CourseAdapter1(val courseList1: List<Course1>) :
         query.findObjects(object : FindListener<Teacher>() {
             override fun done(list : List<Teacher>, e : BmobException?) {
                 if (e == null) {
-                    holder.tid.text = list[0].name
+                    holder.tname.text = list[0].name
                 }
             }
         })

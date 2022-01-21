@@ -18,6 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseSelectionDemo">
         <activity
+            android:name=".ui.teacher.ShowTeachingStudent"
+            android:exported="false" />
+        <activity
+            android:name=".ui.teacher.ShowTeachingCourse"
+            android:exported="false" />
+        <activity
             android:name=".ui.student.UpdateDataActivity"
             android:exported="false" />
         <activity
@@ -46,10 +52,10 @@
         <activity
             android:name=".ui.ShowCourse"
             android:exported="false" />
-        <activity
-            android:name=".ui.login.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
+<!--        <activity-->
+<!--            android:name=".ui.login.LoginActivity"-->
+<!--            android:exported="false"-->
+<!--            android:label="@string/title_activity_login" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="100dp" />
     <TextView
-        android:id="@+id/tid1"
+        android:id="@+id/tname1"
         android:textSize="18sp"
         android:gravity="center"
         android:layout_weight="1"
