@@ -74,54 +74,19 @@ class ShowSelectedCourseActivity : AppCompatActivity() {
                                         startActivity(intent)
                                         //这里是为了让程序不出现错误
                                         //TODO
-                                        finish()
+//                                        finish()
                                     }
                                 })
                             }
                         })
-                        /*
-                        val query = BmobQuery<Course1>()
-                        query.addWhereEqualTo("cid", list[0].cid)
-                        query.findObjects(object : FindListener<Course1>() {
-                            override fun done(list: List<Course1>, e : BmobException?) {
-                                if (e == null) {
-                                    val layoutManager = LinearLayoutManager(this@ShowSelectedCourseActivity)
-                                    val recyclerView : RecyclerView = findViewById(R.id.courseRecyclerView1)
-                                    recyclerView.layoutManager = layoutManager
-                                    val adapter = CourseAdapter1(list)
-                                    recyclerView.adapter = adapter
-                                    adapter.setOnItemCLickListener(object : CourseAdapter1.OnItemClickListener {
-                                        override fun onClick(position: Int) {
-                                            CourseHelper1.objectId = list[position].objectId
-                                            CourseHelper1.cid = list[position].cid
-                                            CourseHelper1.cname = list[position].name
-                                            CourseHelper1.tid = list[position].tid
-                                            CourseHelper1.address = list[position].address
-                                            CourseHelper1.selected_num = list[position].selected_num
-                                            CourseHelper1.max_num = list[position].max_num
-                                            val query1 = BmobQuery<Teacher>()
-                                            query1.addWhereEqualTo("id", list[position].tid)
-                                            query1.findObjects(object : FindListener<Teacher>() {
-                                                override fun done(list1 : List<Teacher>, e : BmobException?) {
-                                                    if (e == null) {
-                                                        CourseHelper1.tname = list1[0].name.toString()
-                                                        CourseHelper1.phone = list1[0].phone
-                                                    }
-                                                }
-                                            })
-                                            val intent = Intent(this@ShowSelectedCourseActivity, DetailCourseActivity::class.java)
-                                            startActivity(intent)
-                                            //这里是为了让程序不出现错误
-                                            //TODO
-                                            finish()
-                                        }
-                                    })
-                                }
-                            }
-                        })
-                         */
                     }
                     else {
+                        val courseList = ArrayList<Course1>()
+                        val layoutManager = LinearLayoutManager(this@ShowSelectedCourseActivity)
+                        val recyclerView : RecyclerView = findViewById(R.id.courseRecyclerView1)
+                        recyclerView.layoutManager = layoutManager
+                        val adapter = CourseAdapter1(courseList)
+                        recyclerView.adapter = adapter
                         Toast.makeText(CourseSelectionApplication.context, "您还未选课！", Toast.LENGTH_SHORT).show()
                     }
                 }

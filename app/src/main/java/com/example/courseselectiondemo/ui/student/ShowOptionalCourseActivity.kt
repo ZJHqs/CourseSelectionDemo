@@ -114,7 +114,7 @@ class ShowOptionalCourseActivity : AppCompatActivity() {
                                             startActivity(intent)
                                             //这里是为了让程序不出现错误
                                             //TODO
-                                            finish()
+//                                            finish()
                                         }
                                     })
                                 }
