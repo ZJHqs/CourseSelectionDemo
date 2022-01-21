@@ -67,14 +67,12 @@ class ShowSelectedCourseActivity : AppCompatActivity() {
                                                 if (e == null) {
                                                     CourseHelper1.tname = list3[0].name.toString()
                                                     CourseHelper1.phone = list3[0].phone
+                                                    val intent = Intent(this@ShowSelectedCourseActivity, DetailCourseActivity::class.java)
+                                                    startActivity(intent)
                                                 }
                                             }
                                         })
-                                        val intent = Intent(this@ShowSelectedCourseActivity, DetailCourseActivity::class.java)
-                                        startActivity(intent)
-                                        //这里是为了让程序不出现错误
-                                        //TODO
-//                                        finish()
+
                                     }
                                 })
                             }
