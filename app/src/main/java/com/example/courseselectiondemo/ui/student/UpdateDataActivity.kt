@@ -23,6 +23,11 @@ class UpdateDataActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_update_data)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_update_data)
+
+    }
+
+    override fun onResume() {
+        super.onResume()
         val query = BmobQuery<Student>()
         query.addWhereEqualTo("id", User.id)
         query.findObjects(object : FindListener<Student>() {

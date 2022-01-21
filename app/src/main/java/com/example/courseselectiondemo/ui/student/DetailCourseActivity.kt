@@ -20,6 +20,10 @@ class DetailCourseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail_course)
+    }
+
+    override fun onResume() {
+        super.onResume()
         binding.detailCourseCname.text = CourseHelper1.cname
         binding.detailCourseSelectedNum.text = CourseHelper1.selected_num.toString()
         binding.detailCourseMaxNum.text = CourseHelper1.max_num.toString()

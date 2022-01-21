@@ -22,6 +22,10 @@ class ShowCourse1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 //        setContentView(R.layout.activity_show_course1)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_show_course1)
+    }
+
+    override fun onResume() {
+        super.onResume()
         val bmobQuery = BmobQuery<Course1>()
         bmobQuery.findObjects(object : FindListener<Course1>() {
             override fun done(list: List<Course1>, e : BmobException?) {

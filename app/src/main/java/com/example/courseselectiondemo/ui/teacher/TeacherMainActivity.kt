@@ -19,5 +19,9 @@ class TeacherMainActivity : AppCompatActivity() {
             val intent = Intent(this, ShowTeachingCourse::class.java)
             startActivity(intent)
         }
+        binding.updateTeacherData.setOnClickListener {
+            val intent = Intent(this, UpdateTeacherData::class.java)
+            startActivity(intent)
+        }
     }
 }

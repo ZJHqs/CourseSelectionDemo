@@ -18,6 +18,10 @@ class ShowCourse : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_course)
+    }
+
+    override fun onResume() {
+        super.onResume()
         val bmobQuery = BmobQuery<Course>()
         bmobQuery.findObjects(object : FindListener<Course>() {
             override fun done(list : List<Course>, e : BmobException?) {
