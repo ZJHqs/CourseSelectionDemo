@@ -21,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseSelectionDemo">
         <activity
+            android:name=".ui.admin.DeleteCourseActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.admin.AddCourseActivity"
             android:exported="false" />
         <activity
