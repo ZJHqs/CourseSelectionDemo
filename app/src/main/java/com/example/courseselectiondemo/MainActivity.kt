@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             else if (binding.admin.isChecked) {
                 val bmobQuery1: BmobQuery<Admin> = BmobQuery()
                 val bmobQuery2: BmobQuery<Admin> = BmobQuery()
-                bmobQuery1.addWhereEqualTo("objectId", binding.uid.text.toString())
+                bmobQuery1.addWhereEqualTo("name", binding.uid.text.toString())
                 bmobQuery2.addWhereEqualTo("password", binding.upassword.text.toString())
                 val queries = ArrayList<BmobQuery<Admin>>()
                 queries.add(bmobQuery1)
