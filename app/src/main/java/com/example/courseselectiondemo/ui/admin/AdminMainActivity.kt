@@ -27,5 +27,9 @@ class AdminMainActivity : AppCompatActivity() {
             val intent = Intent(this, DeleteCourseActivity::class.java)
             startActivity(intent)
         }
+        binding.addStudent.setOnClickListener {
+            val intent = Intent(this, AddStudentActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
