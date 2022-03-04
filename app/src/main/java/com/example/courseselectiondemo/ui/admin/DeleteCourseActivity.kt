@@ -35,7 +35,7 @@ class DeleteCourseActivity : AppCompatActivity() {
                                 course.delete(object : UpdateListener() {
                                     override fun done(e1: BmobException?) {
                                         if (e1 == null) {
-                                            Toast.makeText(CourseSelectionApplication.context, "删除成功", Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(CourseSelectionApplication.context, "删除课程成功", Toast.LENGTH_SHORT).show()
                                         }
                                         else {
                                             // TODO

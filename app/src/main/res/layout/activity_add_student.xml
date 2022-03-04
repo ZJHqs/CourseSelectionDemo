@@ -15,7 +15,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="学号"/>
+                android:text="学号:"/>
             <EditText
                 android:id="@+id/student_id5"
                 android:layout_width="0dp"
@@ -30,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="学生姓名"/>
+                android:text="学生姓名:"/>
             <EditText
                 android:id="@+id/student_name5"
                 android:layout_width="0dp"
